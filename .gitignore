@@ -34,3 +34,7 @@ xmlrpc.php
 /profiles
 /scripts
 /themes
+
+# gulp ignore
+node_modules
+/node_modules
