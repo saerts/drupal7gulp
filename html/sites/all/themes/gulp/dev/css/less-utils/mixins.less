@@ -1,0 +1,201 @@
+/* LESS Document ( a collection of fine mixin's */
+
+/* +++++++++++ --- RADIUS --- ++++++++++++ */
+.radius (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+ border-radius: @topleft @topright @bottomleft @bottomright;
+ -webkit-border-radius: @topleft @topright @bottomleft @bottomright;
+ -moz-border-radius: @topleft @topright @bottomleft @bottomright;
+}
+.radius-top (@topleft: 5px, @topright: 5px, @bottomleft: 0, @bottomright: 0) {
+ border-radius: @topleft @topright @bottomleft @bottomright;
+ -webkit-border-radius: @topleft @topright @bottomleft @bottomright;
+ -moz-border-radius: @topleft @topright @bottomleft @bottomright;
+}
+
+.radius-left (@topleft: 5px, @topright: 0, @bottomright: 0, @bottomleft: 5px) {
+ border-radius: @topleft @topright @bottomright @bottomleft;
+ -webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+ -moz-border-radius: @topleft @topright @bottomright @bottomleft;
+}
+.radius-right (@topleft: 0, @topright: 5px, @bottomright: 5px, @bottomleft: 0) {
+ border-radius: @topleft @topright @bottomright @bottomleft;
+ -webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+ -moz-border-radius: @topleft @topright @bottomright @bottomleft;
+}
+.rounded-corners(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+/* +++++++++++ --- SPRITES --- ++++++++++++ */
+@spriteGrid: 64px;
+.sprite(@x, @y) {
+ background: url("../images/sprite-easy.png") no-repeat;
+ background-position: -(@x*@spriteGrid) -(@y*@spriteGrid);
+}
+.spriteInline(@x, @y) {
+ .sprite(@x, @y);
+ display: inline-block;
+ content: "";
+}
+.spriteInline(@x, @y, @width, @height) {
+ .sprite(@x, @y);
+ display: inline-block;
+ content: "";
+ width: @width;
+ height: @height;
+}
+.spritePadded(@x, @y) {
+ .sprite(@x, @y);
+ position: absolute;
+ content: "";
+}
+.spritePadded(@x, @y, @width, @height) {
+ .sprite(@x, @y);
+ position: absolute;
+ content: "";
+ width: @width;
+ height: @height;
+}
+
+.hideText{
+   text-indent: -99999px;
+   position:relative;
+   overflow: hidden;
+   font-size: 0;
+   display:block;
+   line-height: 0;
+}
+.spriteReplace(@x, @y) {
+   .sprite(@x, @y);
+   .hideText;
+}
+.spriteReplace (@x, @y, @width, @height) {
+   .sprite(@x, @y);
+   .hideText;
+   width: @width;
+   height: @height;
+}
+
+/* Mixin's from Preboot (getpreboot.com)
+-----------------------------------------------------------
+
+/* +++++++++++ --- TRANSITIONS --- ++++++++++++ */
+/* Set all transition information with one, or specify a separate delay and duration as needed. */
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+     -moz-transition-delay: @transition-delay;
+       -o-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+     -moz-transition-duration: @transition-duration;
+       -o-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+/* +++++++++++ --- TRANSFORMATIONS --- ++++++++++++ */
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+     -moz-transform: scale(@ratio);
+      -ms-transform: scale(@ratio);
+       -o-transform: scale(@ratio);
+          transform: scale(@ratio);
+}
+.translate(@x, @y) {
+  -webkit-transform: translate(@x, @y);
+     -moz-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y);
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+.skew(@x, @y) {
+  -webkit-transform: skew(@x, @y);
+     -moz-transform: skew(@x, @y);
+      -ms-transform: skewX(@x) skewY(@y);
+       -o-transform: skew(@x, @y);
+          transform: skew(@x, @y);
+  -webkit-backface-visibility: hidden;
+}
+.translate3d(@x, @y, @z) {
+  -webkit-transform: translate3d(@x, @y, @z);
+     -moz-transform: translate3d(@x, @y, @z);
+       -o-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+
+/* +++++++++++ --- OPACITY --- ++++++++++++ */
+.opacity(@opacity) {
+  opacity: @opacity;
+  @opacity-ie: @opacity * 100;
+  filter: ~"alpha(opacity=@{opacity-ie})"; /*IE8*/
+}
+
+/* +++++++++++ --- OPACITY --- ++++++++++++ */
+/* Forget adding class="clearfix" to any element and instead 
+add the .clearfix() mixin where appropriate. */
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* +++++++++++ --- HORIZONTAL CENTERING --- ++++++++++++ */
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* USAGE
+Quickly center any element within its parent. Requires width or max-width to be set.
+
+.container { width: 940px; .center-block();}
+*/
+
+/* +++++++++++ --- SIZE HELPERS --- ++++++++++++ */
+.size(@width, @height) {
+  width: @width;
+  height: @height;
+}
+.square(@size) {
+  .size(@size, @size);
+}
+
+
+
+/* +++++++++++ --- RETINA IMAGES --- ++++++++++++ */
+/* Specify two image paths and the @1x image dimensions, 
+and Preboot will provide an @2x media query. */
+.retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}

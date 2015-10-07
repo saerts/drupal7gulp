@@ -1,0 +1,28 @@
+name = gulp
+description = Custom theme for gulp
+core = 7.x
+
+; CSS
+stylesheets[all][] = dev/css/vendor/normalize.min.css
+stylesheets[all][] = build/css/main.css
+
+
+; JS
+scripts[] = dev/js/vendor/modernizr.custom.light.js
+scripts[] = build/js/main.js
+
+; Regions
+regions[logo] = logo
+regions[mainmenu] = mainmenu
+regions[languages] = languages
+regions[contentTop] = Top Content
+regions[content] = Content
+regions[contentBottom] = Bottom Content
+
+
+
+regions[bottomBlock1] = bottomBlock1
+regions[bottomBlock2] = bottomBlock2
+regions[bottomBlock3] = bottomBlock3
+
+regions[copyright] = Copyright
