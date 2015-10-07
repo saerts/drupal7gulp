@@ -1,6 +1,7 @@
 <?php
 /**
  * Implements hook_preprocess().
+ * Oh yeah
  */
 function gulp_preprocess_page(&$vars, $hook) {
     if (isset($vars['node']->type)) {

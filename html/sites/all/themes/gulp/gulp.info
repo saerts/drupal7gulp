@@ -9,7 +9,7 @@ stylesheets[all][] = build/css/main.css
 
 ; JS
 scripts[] = dev/js/vendor/modernizr.custom.light.js
-scripts[] = build/js/main.js
+; scripts[] = build/js/main.js
 
 ; Regions
 regions[logo] = logo
