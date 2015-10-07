@@ -38,3 +38,8 @@ xmlrpc.php
 # gulp ignore
 node_modules
 /node_modules
+
+# Idea (Webstorm & phpStorm)
+.idea
+.codekit-cache
+
